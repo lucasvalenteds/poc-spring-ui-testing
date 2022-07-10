@@ -40,6 +40,8 @@ dependencies {
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("org.testcontainers:junit-jupiter")
     testImplementation("org.testcontainers:postgresql")
+    testImplementation("org.testcontainers:selenium")
+    testImplementation("org.seleniumhq.selenium:selenium-java:3.141.59")
 }
 
 dependencyManagement {
