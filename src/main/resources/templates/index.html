@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Search.it</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+<header>
+    <h1>Search.it</h1>
+</header>
+<main>
+    <div id="search">
+        <form id="search-form" action="/" th:action="@{/}" th:object="${search}" method="post">
+            <label for="search-form-text-input">
+                <input id="search-form-text-input" type="text" placeholder="Type what you would like to search"
+                       th:field="*{text}"/>
+            </label>
+            <input id="search-form-submit-button" type="submit" value="Search">
+        </form>
+    </div>
+    <div id="search-result" th:if="${!firstSearch}">
+        <div id="search-result-empty-state" th:if="${links.isEmpty()}">
+            <p>None links found</p>
+        </div>
+        <ul id="search-result-links-list" th:if="${!links.isEmpty()}"
+            th:each="link : ${links}">
+            <li th:id="${link.getId()}">
+                <a th:href="${link.getUrl()}" th:text="${link.getTitle()}"></a>
+                <br>
+                <span th:text="${link.getDescription()}"></span>
+            </li>
+        </ul>
+    </div>
+</main>
+</body>
+</html>
